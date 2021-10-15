@@ -7,16 +7,17 @@ class Chart extends StatelessWidget {
   final List<Transaction> recentTransaction;
 
   const Chart(this.recentTransaction);
+  //
+  //
+  //returning all  the day and total sum of the amount on that day as a List
   List<Map<String, Object>> get groupedTransactionValues {
     return List.generate(7, (index) {
       final weekDay = DateTime.now().subtract(Duration(days: index));
       double totalSum = 0.0;
       for (var i = 0; i < recentTransaction.length; i++) {
         if (recentTransaction[i].date.day == weekDay.day &&
-                recentTransaction[i].date.month == weekDay.month &&
-                recentTransaction[i].date.year == weekDay.year
-            //add year a bug wil come
-            ) {
+            recentTransaction[i].date.month == weekDay.month &&
+            recentTransaction[i].date.year == weekDay.year) {
           totalSum += recentTransaction[i].amount;
         }
       }
@@ -30,9 +31,11 @@ class Chart extends StatelessWidget {
     }).reversed.toList();
   }
 
+  //
+  //
+//add all "amount" by iterating through it
+  //using fold because we get list from groupedtransaction getter
   double get totalSpending {
-    //add all "amount" by iterating through it
-    //using fold because we get list from groupedtransaction getter
     return groupedTransactionValues.fold(0.0, (previousValue, element) {
       return previousValue + element['amount'];
     });
@@ -49,9 +52,9 @@ class Chart extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: groupedTransactionValues.map((e) {
-            return //Text('${e['day']}: ${e['amount']}');
-                Flexible(
+            return Flexible(
               fit: FlexFit.tight,
+              // calling CharBar by passing day amount and %of spending
               child: ChartBar(
                   '${e['day']}',
                   e['amount'],

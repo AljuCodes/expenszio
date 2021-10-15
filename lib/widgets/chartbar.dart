@@ -12,6 +12,7 @@ class ChartBar extends StatelessWidget {
       builder: (context, constraints) {
         return Column(
           children: [
+            //the amount in chartbar
             Container(
                 height: 20,
                 child: FittedBox(
@@ -23,6 +24,7 @@ class ChartBar extends StatelessWidget {
               height: 80,
               child: Column(
                 children: [
+                  //the amount bar
                   Container(
                     height: 60,
                     width: 10,

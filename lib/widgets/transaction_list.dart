@@ -13,15 +13,21 @@ class TransactionList extends StatelessWidget {
     return Container(
       height: 400,
       child: transactions.isEmpty
-          ? Column(
+          ?
+          //image for no transaction
+          Column(
               children: <Widget>[
+                //no Transaction added yet
                 Text(
                   'No transactions added yet!',
                   style: Theme.of(context).textTheme.headline6,
                 ),
+
                 SizedBox(
                   height: 20,
                 ),
+
+                //image of zzz
                 Container(
                     height: 200,
                     child: Image.asset(
@@ -30,11 +36,15 @@ class TransactionList extends StatelessWidget {
                     )),
               ],
             )
+          //
+          //
           : ListView.builder(
               itemBuilder: (ctx, index) {
                 return Card(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
+                    //
+                    //
                     child: ListTile(
                       leading: CircleAvatar(
                         backgroundColor: Theme.of(context).primaryColor,

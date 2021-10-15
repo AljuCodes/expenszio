@@ -15,7 +15,9 @@ class _NewTransactionState extends State<NewTransaction> {
 
   final _amountController = TextEditingController();
   DateTime _selectedDate;
-
+//
+//
+//submiting data to addTransaction
   void _submitData() {
     if (_amountController.text.isEmpty) {
       return;
@@ -32,6 +34,9 @@ class _NewTransactionState extends State<NewTransaction> {
     Navigator.of(context).pop();
   }
 
+//
+//
+//DatePicker
   void _presentdatePicker() {
     showDatePicker(
       context: context,
