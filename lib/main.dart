@@ -48,6 +48,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  //list of inbuilt transactions
+
   final List<Transaction> _userTransactions = [
     Transaction(
       id: 't1',
@@ -91,8 +93,8 @@ class _MyHomePageState extends State<MyHomePage> {
     )
   ];
 
+  //to get rid of transaciton before 7 days
   List<Transaction> get _recentTransactions {
-    //to get rid of transaciton before 7 days
     return _userTransactions.where((element) {
       return element.date.isAfter(
         DateTime.now().subtract(
@@ -102,9 +104,9 @@ class _MyHomePageState extends State<MyHomePage> {
     }).toList();
   }
 
+//add new transaction using  the data from new_transaction.dart
   void _addNewTransaction(
       String txTitle, double txAmount, DateTime _selectedDate) {
-    //add new transaction using  the data from new_transaction.dart
     final newTx = Transaction(
       title: txTitle,
       amount: txAmount,
@@ -117,6 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+//showModalBottomSheet
   void _startAddNewTransaction(BuildContext ctx) {
     showModalBottomSheet(
       context: ctx,
@@ -130,6 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+//delete Transaction
   void _deleteTransaction(String id) {
     setState(() {
       _userTransactions.removeWhere((element) => element.id == id);
@@ -151,7 +155,7 @@ class _MyHomePageState extends State<MyHomePage> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("show Chart"),
+            Text("Chart"),
             Switch(
                 value: _showChart,
                 onChanged: (val) {
